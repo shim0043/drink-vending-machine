@@ -1,2 +1,2 @@
 # Drink-Vending-Machine
-A web app that simulates a living design document. The user selects a layout template and can dynamically swap and mix font pairings in real-time.
+A drink vending machine simulator game where users insert a certain amount of money and then choose any variety of drink options to purchase. Once the drink “falls” from the machine, users can either choose to keep them in their bags or throw them out. The user should have 5$ by default.
