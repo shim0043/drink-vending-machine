@@ -14,12 +14,7 @@
     <header>
         <nav aria-label="Main navigation">
             <div class="wrapper d-flex justify-content-between align-items-center py-4">
-                <a href="index.html" class="site-title mb-0 fs-2 text-white">Drink Vending Machine</a>
-                <div class="nav-icons">
-                    <button id="reset-game" class="btn icon-btn" aria-label="Reset Game">
-                        <i class="fa-solid fa-rotate-right fs-2 text-white"></i>
-                    </button>
-                </div>
+                <a href="index.html" class="site-title mb-0 fs-2">Drink Vending Machine</a>
             </div>
         </nav>
     </header>
@@ -49,9 +44,7 @@
                             <i class="fa-solid fa-triangle-exclamation"></i> Insufficient funds for this purchase!
                         </div>
 
-                        <button id="system-reset" class="btn btn-outline-secondary w-100">
-                            <i class="fa-solid fa-power-off"></i> System Reset
-                        </button>
+                        <button id="system-reset" class="btn btn-outline-secondary w-100">Reset</button>
                     </section>
                 </div>
 
@@ -93,10 +86,8 @@
                             </div>
                             <div class="col">
                                 <div class="drink-card border rounded p-2">
-                                    <div class="drink-graphic random mb-2 mx-auto">
-                                        <i class="fa-solid fa-question text-white"></i>
-                                    </div>
-                                    <p class="fw-bold mb-0">Surprise</p>
+                                    <div class="drink-graphic random mb-2 mx-auto"></div>
+                                    <p class="fw-bold mb-0">Random</p>
                                     <small class="text-muted">$0.75</small>
                                     <button class="btn btn-sm btn-dark w-100 mt-2 drink-btn" data-price="0.75" data-name="Random Drink">Select</button>
                                 </div>
@@ -112,7 +103,7 @@
                                 </div>
                             </div>
                             <div class="col-md-8 text-center text-md-start">
-                                <h3 id="status-text" class="h5 mb-3 text-secondary">Ready to purchase...</h3>
+                                <h3 id="status-text" class="h5 mb-3 text-secondary">Collect your drink!</h3>
                                 <div class="d-flex gap-2 justify-content-center justify-content-md-start">
                                     <button id="add-to-bag" class="btn btn-success" disabled>
                                         <i class="fa-solid fa-bag-shopping"></i> Add to Bag
@@ -128,7 +119,7 @@
             </div>
 
             <section class="inventory-section mt-5 py-4 border-top">
-                <h2 class="fs-3 mb-4"><i class="fa-solid fa-briefcase text-primary"></i> My Bag (Inventory)</h2>
+                <h2 class="fs-3 mb-4">My Bag (Inventory)</h2>
                 <div id="inventory-list" class="row row-cols-2 row-cols-md-4 row-cols-lg-6 g-3">
                     <div class="col text-center inventory-item">
                         <div class="p-3 border rounded bg-white shadow-sm position-relative">
@@ -141,7 +132,7 @@
         </div>
     </main>
 
-    <footer class="py-5 bg-dark">
+    <!-- <footer class="py-5 bg-dark">
         <div class="wrapper d-flex justify-content-between text-white">
             <p class="mb-0">© Drink Machine Simulator 2026</p>
             <div class="footer-links">
@@ -149,7 +140,7 @@
                 <a href="#" class="text-white text-decoration-none">Privacy</a>
             </div>
         </div>
-    </footer>
+    </footer> -->
 
     <script src="script.js"></script>
 </body>
