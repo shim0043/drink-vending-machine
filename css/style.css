@@ -1,0 +1,133 @@
+/* --- mobile design --- */
+/* general styling */
+:root {
+    --primary: #2657B1; 
+    --white: #FFFFFF;
+    --grey: #D9D9D9;
+    --wireframe-border: #333333;
+    --paper-bg: #eeeeee;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--paper-bg);
+    color: var(--wireframe-border);
+}
+
+p {
+    line-height: 1.5;
+}
+
+.wrapper {
+    width: 480px;
+    margin: auto;
+}
+
+.card, .drink-card, .vending-slot, .display-screen, .inventory-item {
+    border-radius: 0;
+    background: var(--white);
+}
+
+/* navigation */
+nav {
+    background: var(--white);
+    border-bottom: 3px solid var(--wireframe-border);
+}
+
+.site-title {
+    color: var(--wireframe-border);
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+/* machine display screen */
+.display-screen {
+    background: var(--white);
+    padding: 1rem;
+    text-align: center;
+}
+
+#balance-display {
+    font-family: 'Courier New', monospace;
+    font-size: 2.5rem;
+    color: var(--primary);
+}
+
+/* search/money section */
+.btn-primary {
+    background: var(--primary);
+}
+
+/* drink selection section */
+.drink-card {
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+
+.drink-graphic {
+    width: 50px;
+    height: 80px;
+    border: 2px solid var(--wireframe-border);
+}
+
+.drink-btn {
+    background: var(--white);
+    border: 2px solid var(--wireframe-border);
+    color: var(--wireframe-border);
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.drink-btn:hover {
+    background: var(--grey);
+}
+
+/* transaction & vending area */
+.vending-slot {
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f0f0f0;
+    border-style: dashed !important;
+}
+
+/* inventory section */
+.inventory-section h2 {
+    border-bottom: 3px solid var(--wireframe-border);
+    padding-bottom: 1rem;
+    margin-top: 3rem;
+}
+
+.inventory-item {
+    aspect-ratio: 1/1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.drink-graphic.sm {
+    width: 30px;
+    height: 50px;
+}
+
+/* footer
+footer {
+    background: var(--wireframe-border);
+    border-top: 5px solid var(--primary);
+} */
+
+/* --- tablet design media query --- */
+@media screen and (min-width: 760px) {
+    .wrapper {
+        width: 720px;
+    }
+}
+
+/* --- desktop design media query --- */
+@media screen and (min-width: 1200px) {
+    .wrapper {
+        width: 1120px;
+    }
+}
