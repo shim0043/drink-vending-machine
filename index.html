@@ -4,15 +4,152 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Drink Vending Machine</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/21478e2192.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <header></header>
+    <header>
+        <nav aria-label="Main navigation">
+            <div class="wrapper d-flex justify-content-between align-items-center py-4">
+                <a href="index.html" class="site-title mb-0 fs-2 text-white">Drink Vending Machine</a>
+                <div class="nav-icons">
+                    <button id="reset-game" class="btn icon-btn" aria-label="Reset Game">
+                        <i class="fa-solid fa-rotate-right fs-2 text-white"></i>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
 
-    <main></main>
+    <main id="main-content" class="my-5 py-4">
+        <div class="wrapper">
+            <div class="row g-4">
+                
+                <div class="col-lg-4">
+                    <section class="card p-4 mb-4 shadow-sm">
+                        <h2 class="fs-4 mb-3">Machine Status</h2>
+                        <div class="display-screen bg-dark text-success p-3 rounded mb-3 border border-secondary">
+                            <p class="mb-1 small text-uppercase">Available Balance</p>
+                            <span id="balance-display" class="fs-2 fw-bold">$5.00</span>
+                        </div>
 
-    <footer></footer>
+                        <form id="money-form" class="mb-3">
+                            <label for="money-input" class="form-label fw-bold">Insert Money</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fa-solid fa-money-bill-1-wave"></i></span>
+                                <input type="number" id="money-input" class="form-control" placeholder="0.00" step="0.25" min="0">
+                                <button type="submit" class="btn btn-primary">Insert</button>
+                            </div>
+                        </form>
+
+                        <div id="money-warning" class="alert alert-danger d-none" role="alert">
+                            <i class="fa-solid fa-triangle-exclamation"></i> Insufficient funds for this purchase!
+                        </div>
+
+                        <button id="system-reset" class="btn btn-outline-secondary w-100">
+                            <i class="fa-solid fa-power-off"></i> System Reset
+                        </button>
+                    </section>
+                </div>
+
+                <section class="col-lg-8">
+                    <div class="card p-4 shadow-sm">
+                        <h2 class="fs-4 mb-4 text-center">Select Your Drink</h2>
+                        <div class="row row-cols-2 row-cols-md-5 g-3 text-center">
+                            <div class="col">
+                                <div class="drink-card border rounded p-2">
+                                    <div class="drink-graphic cola mb-2 mx-auto"></div>
+                                    <p class="fw-bold mb-0">Cola</p>
+                                    <small class="text-muted">$1.50</small>
+                                    <button class="btn btn-sm btn-dark w-100 mt-2 drink-btn" data-price="1.50" data-name="Cola">Select</button>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="drink-card border rounded p-2">
+                                    <div class="drink-graphic juice mb-2 mx-auto"></div>
+                                    <p class="fw-bold mb-0">Juice</p>
+                                    <small class="text-muted">$1.25</small>
+                                    <button class="btn btn-sm btn-dark w-100 mt-2 drink-btn" data-price="1.25" data-name="Juice">Select</button>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="drink-card border rounded p-2">
+                                    <div class="drink-graphic coffee mb-2 mx-auto"></div>
+                                    <p class="fw-bold mb-0">Coffee</p>
+                                    <small class="text-muted">$2.00</small>
+                                    <button class="btn btn-sm btn-dark w-100 mt-2 drink-btn" data-price="2.00" data-name="Coffee">Select</button>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="drink-card border rounded p-2">
+                                    <div class="drink-graphic energy mb-2 mx-auto"></div>
+                                    <p class="fw-bold mb-0">Energy</p>
+                                    <small class="text-muted">$2.50</small>
+                                    <button class="btn btn-sm btn-dark w-100 mt-2 drink-btn" data-price="2.50" data-name="Energy Drink">Select</button>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="drink-card border rounded p-2">
+                                    <div class="drink-graphic random mb-2 mx-auto">
+                                        <i class="fa-solid fa-question text-white"></i>
+                                    </div>
+                                    <p class="fw-bold mb-0">Surprise</p>
+                                    <small class="text-muted">$0.75</small>
+                                    <button class="btn btn-sm btn-dark w-100 mt-2 drink-btn" data-price="0.75" data-name="Random Drink">Select</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr class="my-5">
+
+                        <div class="row align-items-center bg-light p-4 rounded border">
+                            <div class="col-md-4 text-center">
+                                <div id="vending-slot" class="vending-slot border border-3 rounded d-flex align-items-center justify-content-center">
+                                    <span class="text-muted small">Collect Area</span>
+                                </div>
+                            </div>
+                            <div class="col-md-8 text-center text-md-start">
+                                <h3 id="status-text" class="h5 mb-3 text-secondary">Ready to purchase...</h3>
+                                <div class="d-flex gap-2 justify-content-center justify-content-md-start">
+                                    <button id="add-to-bag" class="btn btn-success" disabled>
+                                        <i class="fa-solid fa-bag-shopping"></i> Add to Bag
+                                    </button>
+                                    <button id="throw-away" class="btn btn-outline-danger" disabled>
+                                        <i class="fa-solid fa-trash-can"></i> Throw Away
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <section class="inventory-section mt-5 py-4 border-top">
+                <h2 class="fs-3 mb-4"><i class="fa-solid fa-briefcase text-primary"></i> My Bag (Inventory)</h2>
+                <div id="inventory-list" class="row row-cols-2 row-cols-md-4 row-cols-lg-6 g-3">
+                    <div class="col text-center inventory-item">
+                        <div class="p-3 border rounded bg-white shadow-sm position-relative">
+                            <div class="drink-graphic cola sm mx-auto"></div>
+                            <small class="d-block mt-2">Cola</small>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="py-5 bg-dark">
+        <div class="wrapper d-flex justify-content-between text-white">
+            <p class="mb-0">© Drink Machine Simulator 2026</p>
+            <div class="footer-links">
+                <a href="#" class="text-white text-decoration-none me-3">Help</a>
+                <a href="#" class="text-white text-decoration-none">Privacy</a>
+            </div>
+        </div>
+    </footer>
 
     <script src="script.js"></script>
 </body>
