@@ -1,7 +1,7 @@
 /* --- mobile design --- */
 /* general styling */
 :root {
-    --primary: #2657B1; 
+    --primary: #0e58e2; 
     --white: #FFFFFF;
     --grey: #D9D9D9;
     --border: #333333;
@@ -31,11 +31,12 @@ p {
 /* navigation */
 nav {
     background: var(--white);
-    border-bottom: 3px solid var(--border);
+    border-bottom: 2px solid var(--border);
 }
 
 .site-title {
     color: var(--border);
+    text-decoration: none;
     font-weight: bold;
     text-transform: uppercase;
 }
@@ -53,7 +54,7 @@ nav {
     color: var(--primary);
 }
 
-/* search/money section */
+/* money section */
 .btn-primary {
     background: var(--primary);
 }
@@ -73,7 +74,7 @@ nav {
 }
 
 .drink-btn:hover {
-    background: var(--grey);
+    background: var(--border);
 }
 
 /* vending area */
@@ -87,7 +88,7 @@ nav {
 
 /* inventory section */
 .inventory-section h2 {
-    border-bottom: 3px solid var(--border);
+    border-bottom: 2px solid var(--border);
     padding-bottom: 1rem;
     margin-top: 3rem;
 }
