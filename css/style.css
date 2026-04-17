@@ -4,14 +4,14 @@
     --primary: #2657B1; 
     --white: #FFFFFF;
     --grey: #D9D9D9;
-    --wireframe-border: #333333;
+    --border: #333333;
     --paper-bg: #eeeeee;
 }
 
 body {
     font-family: 'Inter', sans-serif;
     background-color: var(--paper-bg);
-    color: var(--wireframe-border);
+    color: var(--border);
 }
 
 p {
@@ -31,11 +31,11 @@ p {
 /* navigation */
 nav {
     background: var(--white);
-    border-bottom: 3px solid var(--wireframe-border);
+    border-bottom: 3px solid var(--border);
 }
 
 .site-title {
-    color: var(--wireframe-border);
+    color: var(--border);
     font-weight: bold;
     text-transform: uppercase;
 }
@@ -67,13 +67,13 @@ nav {
 .drink-graphic {
     width: 50px;
     height: 80px;
-    border: 2px solid var(--wireframe-border);
+    border: 2px solid var(--border);
 }
 
 .drink-btn {
     background: var(--white);
-    border: 2px solid var(--wireframe-border);
-    color: var(--wireframe-border);
+    border: 2px solid var(--border);
+    color: var(--border);
     font-weight: bold;
     text-transform: uppercase;
 }
@@ -89,12 +89,11 @@ nav {
     align-items: center;
     justify-content: center;
     background: #f0f0f0;
-    border-style: dashed !important;
 }
 
 /* inventory section */
 .inventory-section h2 {
-    border-bottom: 3px solid var(--wireframe-border);
+    border-bottom: 3px solid var(--border);
     padding-bottom: 1rem;
     margin-top: 3rem;
 }
@@ -114,18 +113,18 @@ nav {
 
 /* footer
 footer {
-    background: var(--wireframe-border);
+    background: var(--border);
     border-top: 5px solid var(--primary);
 } */
 
-/* --- tablet design media query --- */
+/* --- tablet design --- */
 @media screen and (min-width: 760px) {
     .wrapper {
         width: 720px;
     }
 }
 
-/* --- desktop design media query --- */
+/* --- desktop design --- */
 @media screen and (min-width: 1200px) {
     .wrapper {
         width: 1120px;
