@@ -19,16 +19,15 @@
         </nav>
     </header>
 
-    <main id="main-content" class="my-5 py-4">
+    <main id="main-content" class="my-5">
         <div class="wrapper">
-            <div class="row g-4">
-                
+            <div class="row">
                 <div class="col-lg-4">
-                    <section class="card p-4 mb-4 shadow-sm">
-                        <h2 class="fs-4 mb-3">Machine Status</h2>
+                    <section class="card p-4 mb-4">
+                        <h2 class="fs-4 mb-3">My Wallet</h2>
                         <div class="display-screen bg-dark text-success p-3 rounded mb-3 border border-secondary">
-                            <p class="mb-1 small text-uppercase">Available Balance</p>
-                            <span id="balance-display" class="fs-2 fw-bold">$5.00</span>
+                            <p class="mb-1 text-uppercase">Available Balance</p>
+                            <span id="balance-display" class="fw-bold">$5.00</span>
                         </div>
 
                         <form id="money-form" class="mb-3">
@@ -41,7 +40,7 @@
                         </form>
 
                         <div id="money-warning" class="alert alert-danger d-none" role="alert">
-                            <i class="fa-solid fa-triangle-exclamation"></i> Insufficient funds for this purchase!
+                            <i class="fa-solid fa-triangle-exclamation"></i> Warning: Insufficient funds!
                         </div>
 
                         <button id="system-reset" class="btn btn-outline-secondary w-100">Reset</button>
@@ -49,55 +48,59 @@
                 </div>
 
                 <section class="col-lg-8">
-                    <div class="card p-4 shadow-sm">
-                        <h2 class="fs-4 mb-4 text-center">Select Your Drink</h2>
+                    <div class="card p-4">
+                        <h2 class="fs-4 mb-4">Select Your Drink</h2>
                         <div class="row row-cols-2 row-cols-md-5 g-3 text-center">
                             <div class="col">
-                                <div class="drink-card p-2">
+                                <div class="drink-card p-0">
                                     <div class="drink-graphic cola mb-2 mx-auto">
                                         <img src="images/cola.JPG" alt="Cola drink">
                                     </div>
-                                    <p class="fw-bold mb-0">Cola</p>
+                                    <p class="fw-bold text-uppercase mb-1">Cola</p>
                                     <small class="text-muted">$1.50</small>
                                     <button class="btn btn-sm btn-dark w-100 mt-2 drink-btn" data-price="1.50" data-name="Cola">Select</button>
                                 </div>
                             </div>
+
                             <div class="col">
-                                <div class="drink-card p-2">
+                                <div class="drink-card p-0">
                                     <div class="drink-graphic juice mb-2 mx-auto">
                                         <img src="images/juice.JPG" alt="Juice drink">
                                     </div>
-                                    <p class="fw-bold mb-0">Juice</p>
+                                    <p class="fw-bold text-uppercase mb-1">Juice</p>
                                     <small class="text-muted">$1.25</small>
                                     <button class="btn btn-sm btn-dark w-100 mt-2 drink-btn" data-price="1.25" data-name="Juice">Select</button>
                                 </div>
                             </div>
+
                             <div class="col">
-                                <div class="drink-card p-2">
+                                <div class="drink-card p-0">
                                     <div class="drink-graphic coffee mb-2 mx-auto">
                                         <img src="images/coffee.JPG" alt="Coffee drink">
                                     </div>
-                                    <p class="fw-bold mb-0">Coffee</p>
+                                    <p class="fw-bold text-uppercase mb-1">Coffee</p>
                                     <small class="text-muted">$2.00</small>
                                     <button class="btn btn-sm btn-dark w-100 mt-2 drink-btn" data-price="2.00" data-name="Coffee">Select</button>
                                 </div>
                             </div>
+
                             <div class="col">
-                                <div class="drink-card p-2">
+                                <div class="drink-card p-0">
                                     <div class="drink-graphic energy mb-2 mx-auto">
                                         <img src="images/energy.JPG" alt="Energy drink">
                                     </div>
-                                    <p class="fw-bold mb-0">Energy</p>
+                                    <p class="fw-bold text-uppercase mb-1">Energy</p>
                                     <small class="text-muted">$2.50</small>
                                     <button class="btn btn-sm btn-dark w-100 mt-2 drink-btn" data-price="2.50" data-name="Energy Drink">Select</button>
                                 </div>
                             </div>
+
                             <div class="col">
-                                <div class="drink-card p-2">
+                                <div class="drink-card p-0">
                                     <div class="drink-graphic random mb-2 mx-auto">
                                         <img src="images/random.JPG" alt="Random drink">
                                     </div>
-                                    <p class="fw-bold mb-0">Random</p>
+                                    <p class="fw-bold text-uppercase mb-1">Random</p>
                                     <small class="text-muted">$0.75</small>
                                     <button class="btn btn-sm btn-dark w-100 mt-2 drink-btn" data-price="0.75" data-name="Random Drink">Select</button>
                                 </div>
@@ -110,12 +113,14 @@
                                     <span class="text-muted small">Collect Area</span>
                                 </div>
                             </div>
+
                             <div class="col-md-8 text-center text-md-start">
                                 <h3 id="status-text" class="h5 mb-3 text-secondary"></h3>
-                                <div class="d-flex gap-2 justify-content-center justify-content-md-start">
+                                <div class="d-flex gap-2 justify-content-md-start">
                                     <button id="add-to-bag" class="btn btn-success" disabled>
                                         <i class="fa-solid fa-bag-shopping"></i> Add to Bag
                                     </button>
+                                    
                                     <button id="throw-away" class="btn btn-outline-danger" disabled>
                                         <i class="fa-solid fa-trash-can"></i> Throw Away
                                     </button>
@@ -126,8 +131,8 @@
                 </section>
             </div>
 
-            <section class="inventory-section mt-5 py-2">
-                <h2 class="fs-3 mb-4">My Bag (Inventory)</h2>
+            <section class="inventory-section">
+                <h2 class="fs-3 mb-4">My Bag</h2>
                 <div id="inventory-list" class="row row-cols-2 row-cols-md-4 row-cols-lg-6 g-3"></div>
             </section>
         </div>
