@@ -1,20 +1,23 @@
+// wallet section elements
 const $balanceDisplay = document.getElementById('balance-display');
 const $moneyInput = document.getElementById('money-input');
 const $moneyWarning = document.getElementById('money-warning');
+const $btnReset = document.getElementById('system-reset');
 
+// vending section elements
 const $vendingSlot = document.getElementById('vending-slot');
 const $statusText = document.getElementById('status-text');
-const $inventoryList = document.getElementById('inventory-list');
-
 const $btnAddToBag = document.getElementById('add-to-bag');
 const $btnThrowAway = document.getElementById('throw-away');
-const $btnReset = document.getElementById('system-reset');
+
+// inventory section elements
+const $inventoryList = document.getElementById('inventory-list');
 
 // data displaying the money balance
 let currentBalance = 5.00;
 let selectedDrink = null; 
 let inventory = [];
-const realDrinks = ['cola', 'juice', 'coffee', 'energy'];
+const drinks = ['cola', 'juice', 'coffee', 'energy'];
 
 // loads from local storage
 const inventoryLS = JSON.parse(localStorage.getItem('inventory'));
@@ -32,7 +35,7 @@ function updateUI() {
     $balanceDisplay.innerText = `$${currentBalance.toFixed(2)}`;
 }
 
-// render inventory
+// render inventory (bag)
 function renderInventory() {
     // reset before adding items
     $inventoryList.innerHTML = "";
@@ -42,7 +45,7 @@ function renderInventory() {
         div.className = "col-4 col-md-2 mb-4";
         
         div.innerHTML = `
-            <div class="inventory-item py-5 rounded bg-white position-relative">
+            <div class="inventory-item py-4 rounded bg-white position-relative">
                 <button class="delete-btn btn" data-index="${index}" style="position: absolute; top: -5px; right: 8px; width: 22px; height: 22px; font-size: 20px;">
                     <i class="fa-solid fa-xmark"></i>
                 </button>
@@ -50,14 +53,14 @@ function renderInventory() {
                 <div class="drink-graphic sm mx-auto">
                     <img src="images/${item.type}.JPG" alt="${item.type}" style="width: 100%; height: auto;">
                 </div>
-                <p class="d-block mt-2">${item.type}</p>
+                <p class="d-block mt-2 fw-bold text-uppercase">${item.type}</p>
             </div>
         `;
 
         $inventoryList.appendChild(div);
     });
 
-    // add event listeners to delete buttons
+    // delete drinks from inventory
     document.querySelectorAll('.delete-btn').forEach($btn => {
         $btn.addEventListener('click', function() {
             const index = $btn.getAttribute('data-index');
@@ -68,7 +71,7 @@ function renderInventory() {
     });
 }
 
-// buying drink
+// buying drinks
 document.querySelectorAll('.drink-btn').forEach($btn => {
     $btn.addEventListener('click', function() {
         const price = parseFloat($btn.getAttribute('data-price'));
@@ -82,7 +85,7 @@ document.querySelectorAll('.drink-btn').forEach($btn => {
 
             let type = $btn.getAttribute('data-name').toLowerCase();
             if (type === 'random drink') {
-                type = realDrinks[Math.floor(Math.random() * realDrinks.length)];
+                type = drinks[Math.floor(Math.random() * drinks.length)];
             }
 
             // set current selection
