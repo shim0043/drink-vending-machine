@@ -32,6 +32,73 @@ function updateUI() {
     $balanceDisplay.innerText = `$${currentBalance.toFixed(2)}`;
 }
 
+// render inventory
+function renderInventory() {
+    // reset before adding items
+    $inventoryList.innerHTML = "";
+
+    inventory.forEach((item, index) => {
+        const div = document.createElement('div');
+        div.className = "col text-center mb-3";
+        
+        div.innerHTML = `
+            <div class="inventory-item p-3 border rounded bg-white shadow-sm position-relative">
+                <div class="drink-graphic sm ${item.type} mx-auto"></div>
+                <small class="d-block mt-2">${item.type}</small>
+                <button class="btn btn-sm btn-outline-danger mt-2 delete-btn" data-index="${index}">
+                    <i class="fa-solid fa-trash"></i>
+                </button>
+            </div>
+        `;
+
+        $inventoryList.appendChild(div);
+    });
+
+    // add event listeners to delete buttons
+    document.querySelectorAll('.delete-btn').forEach($btn => {
+        $btn.addEventListener('click', function() {
+            const index = $btn.getAttribute('data-index');
+            inventory.splice(index, 1); // remove from array
+            saveInventory();
+            renderInventory();
+        });
+    });
+}
+
+// buying drink
+document.querySelectorAll('.drink-btn').forEach($btn => {
+    $btn.addEventListener('click', function() {
+        const price = parseFloat($btn.getAttribute('data-price'));
+        const insertedAmount = parseFloat($moneyInput.value);
+
+        if (insertedAmount >= price) {
+            currentBalance -= price;
+            updateUI();
+            $moneyWarning.classList.add('d-none');
+            $moneyInput.value = '';
+
+            let type = $btn.getAttribute('data-name').toLowerCase();
+            if (type === 'random drink') {
+                type = realDrinks[Math.floor(Math.random() * realDrinks.length)];
+            }
+
+            // set current selection
+            selectedDrink = { type: type };
+            
+            // show in vending slot
+            $vendingSlot.innerHTML = `
+            <div class="drink-graphic">
+                <img src="images/${type}.JPG" alt="${type}" style="max-height: 100px;">
+            </div>`;
+            $statusText.innerText = `Dispensed: ${type}!`;
+            $btnAddToBag.disabled = false;
+            $btnThrowAway.disabled = false;
+        } else {
+            $moneyWarning.classList.remove('d-none');
+        }
+    });
+});
+
 // adding drink to bag
 $btnAddToBag.addEventListener('click', function () {
     if (!selectedDrink) return;
@@ -65,3 +132,4 @@ $btnReset.addEventListener('click', function () {
 
 // initializing
 updateUI();
+renderInventory();
