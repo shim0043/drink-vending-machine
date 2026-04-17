@@ -17,7 +17,7 @@ const $inventoryList = document.getElementById('inventory-list');
 let currentBalance = 5.00;
 let selectedDrink = null; 
 let inventory = [];
-const drinks = ['cola', 'juice', 'coffee', 'energy'];
+const drinks = ['Cola', 'Juice', 'Coffee', 'Energy'];
 
 // loads from local storage
 const inventoryLS = JSON.parse(localStorage.getItem('inventory'));
@@ -81,7 +81,6 @@ document.querySelectorAll('.drink-btn').forEach($btn => {
             currentBalance -= price;
             updateUI();
             $moneyWarning.classList.add('d-none');
-            $moneyInput.value = '';
 
             let type = $btn.getAttribute('data-name').toLowerCase();
             if (type === 'random drink') {
@@ -96,7 +95,7 @@ document.querySelectorAll('.drink-btn').forEach($btn => {
             <div class="drink-graphic">
                 <img src="images/${type}.JPG" alt="${type}" style="max-height: 100px;">
             </div>`;
-            $statusText.innerText = `Dispensed: ${type}!`;
+            $statusText.innerText = `Dispensed: ${type}`;
             $btnAddToBag.disabled = false;
             $btnThrowAway.disabled = false;
         } else {
@@ -105,7 +104,7 @@ document.querySelectorAll('.drink-btn').forEach($btn => {
     });
 });
 
-// adding drink to bag
+// adding drink to bag or throw away
 $btnAddToBag.addEventListener('click', function () {
     if (!selectedDrink) return;
     // adds to array list
@@ -128,6 +127,7 @@ $btnThrowAway.addEventListener('click', function() {
     $btnThrowAway.disabled = true;
 });
 
+// resets balance
 $btnReset.addEventListener('click', function () {
     currentBalance = 5.00;
     inventory = [];
