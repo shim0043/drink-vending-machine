@@ -39,15 +39,18 @@ function renderInventory() {
 
     inventory.forEach((item, index) => {
         const div = document.createElement('div');
-        div.className = "col text-center mb-3";
+        div.className = "col-4 col-md-2 mb-4";
         
         div.innerHTML = `
-            <div class="inventory-item p-3 border rounded bg-white shadow-sm position-relative">
-                <div class="drink-graphic sm ${item.type} mx-auto"></div>
-                <small class="d-block mt-2">${item.type}</small>
-                <button class="btn btn-sm btn-outline-danger mt-2 delete-btn" data-index="${index}">
-                    <i class="fa-solid fa-trash"></i>
+            <div class="inventory-item py-5 rounded bg-white position-relative">
+                <button class="delete-btn btn" data-index="${index}" style="position: absolute; top: -5px; right: 8px; width: 22px; height: 22px; font-size: 20px;">
+                    <i class="fa-solid fa-xmark"></i>
                 </button>
+
+                <div class="drink-graphic sm mx-auto">
+                    <img src="images/${item.type}.JPG" alt="${item.type}" style="width: 100%; height: auto;">
+                </div>
+                <p class="d-block mt-2">${item.type}</p>
             </div>
         `;
 
